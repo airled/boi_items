@@ -1,35 +1,35 @@
 <% require 'nokogiri' %>
 <% require 'curb' %>
+<% require_relative './handler' %>
 
 <% URL = 'http://bindingofisaacrebirth.gamepedia.com' %>
+
 <div class="items">
   <% html = Nokogiri::HTML(Curl.get(URL + '/Item').body) %>
   
   <div class="passive_items">
-    <p>Пассивные предметы</p>
+    <h2>Пассивные предметы</h2>
     <% html.xpath('//table[@class="mw-collapsible wikitable striped passive-collectible"]/tr').map do |row| %>
-      <% name = row.xpath('.//td[1]/a/@title').text %>
-      <% img_url = row.xpath('.//td[2]/a/img/@src').text %>
-      <% desc = row.xpath('.//td[3]').text %>
+      <% item = get_item(row) %>
+      <% next if item[:name] == '' %>
       <div class="item">
-        <div class="name"><%= name %></div>
-        <div class="img"><img src="<%= img_url %>"></div>
-        <div class="desc"><%= desc %></div>
+        <div class="name"><%= item[:name] %></div>
+        <div class="img"><%= image_tag item[:img_url] %></div>
+        <div class="desc"><%= item[:desc] %></div>
       </div>
       <hr>
     <% end %>
   </div>
 
   <div class="active_items">
-    <p>Активные предметы</p>
+    <h2>Активные предметы</h2>
     <% html.xpath('//table[@class="mw-collapsible wikitable striped active-collectible"]/tr').map do |row| %>
-      <% name = row.xpath('.//td[1]/a/@title').text %>
-      <% img_url = row.xpath('.//td[2]/a/img/@src').text %>
-      <% desc = row.xpath('.//td[3]').text %>
+      <% item = get_item(row) %>
+      <% next if item[:name] == '' %>
       <div class="item">
-        <div class="name"><%= name %></div>
-        <div class="img"><img src="<%= img_url %>"></div>
-        <div class="desc"><%= desc %></div>
+        <div class="name"><%= item[:name] %></div>
+        <div class="img"><%= image_tag item[:img_url] %></div>
+        <div class="desc"><%= item[:desc] %></div>
       </div>
       <hr>
     <% end %>
@@ -38,19 +38,16 @@
 </div>
 
 <div class="trinkets">
-  <p>Брелки</p>
+  <h2>Брелоки</h2>
   <% html = Nokogiri::HTML(Curl.get(URL + '/Trinkets').body) %>
-
   <% html.xpath('//tr').map do |row| %>
-    <% name = row.xpath('.//td[1]/a/@title').text %>
-    <% img_url = row.xpath('.//td[2]/a/img/@src').text %>
-    <% desc = row.xpath('.//td[3]').text %>
+    <% item = get_item(row) %>
+    <% next if item[:name] == '' %>
     <div class="item">
-      <div class="name"><%= name %></div>
-      <div class="img"><img src="<%= img_url %>"></div>
-      <div class="desc"><%= desc %></div>
+      <div class="name"><%= item[:name] %></div>
+      <div class="img"><%= image_tag item[:img_url] %></div>
+      <div class="desc"><%= item[:desc] %></div>
     </div>
     <hr>
   <% end %>
-
 </div>

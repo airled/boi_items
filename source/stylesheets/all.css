@@ -58,15 +58,23 @@ h1 {
   display: block;
   width: 100%;
 }
+
 .name{
   display: inline-block;
   width: 10%;
 }
+
 .img{
   display: inline-block;
   width: 20%;
 }
+
 .desc{
   display: inline-block;
   width: 60%;
+  text-align: left;
+}
+
+img{
+  height: 45px;
 }
