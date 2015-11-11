@@ -12,12 +12,7 @@
     <% html.xpath('//table[@class="mw-collapsible wikitable striped passive-collectible"]/tr').map do |row| %>
       <% item = get_item(row) %>
       <% next if item[:name] == '' %>
-      <div class="item">
-        <div class="name"><%= item[:name] %></div>
-        <div class="img"><%= image_tag item[:img_url] %></div>
-        <div class="desc"><%= item[:desc] %></div>
-      </div>
-      <hr>
+      <%= partial(:item_part, :locals => {:item => item}) %>
     <% end %>
   </div>
 
@@ -26,12 +21,7 @@
     <% html.xpath('//table[@class="mw-collapsible wikitable striped active-collectible"]/tr').map do |row| %>
       <% item = get_item(row) %>
       <% next if item[:name] == '' %>
-      <div class="item">
-        <div class="name"><%= item[:name] %></div>
-        <div class="img"><%= image_tag item[:img_url] %></div>
-        <div class="desc"><%= item[:desc] %></div>
-      </div>
-      <hr>
+      <%= partial(:item_part, :locals => {:item => item}) %>
     <% end %>
   </div>
 
@@ -43,11 +33,6 @@
   <% html.xpath('//tr').map do |row| %>
     <% item = get_item(row) %>
     <% next if item[:name] == '' %>
-    <div class="item">
-      <div class="name"><%= item[:name] %></div>
-      <div class="img"><%= image_tag item[:img_url] %></div>
-      <div class="desc"><%= item[:desc] %></div>
-    </div>
-    <hr>
+    <%= partial(:item_part, :locals => {:item => item}) %>
   <% end %>
 </div>
