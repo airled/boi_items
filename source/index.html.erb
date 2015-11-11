@@ -4,7 +4,9 @@
 <% URL = 'http://bindingofisaacrebirth.gamepedia.com' %>
 <div class="items">
   <% html = Nokogiri::HTML(Curl.get(URL + '/Item').body) %>
+  
   <div class="passive_items">
+    <p>Пассивные предметы</p>
     <% html.xpath('//table[@class="mw-collapsible wikitable striped passive-collectible"]/tr').map do |row| %>
       <% name = row.xpath('.//td[1]/a/@title').text %>
       <% img_url = row.xpath('.//td[2]/a/img/@src').text %>
@@ -17,5 +19,38 @@
       <hr>
     <% end %>
   </div>
+
+  <div class="active_items">
+    <p>Активные предметы</p>
+    <% html.xpath('//table[@class="mw-collapsible wikitable striped active-collectible"]/tr').map do |row| %>
+      <% name = row.xpath('.//td[1]/a/@title').text %>
+      <% img_url = row.xpath('.//td[2]/a/img/@src').text %>
+      <% desc = row.xpath('.//td[3]').text %>
+      <div class="item">
+        <div class="name"><%= name %></div>
+        <div class="img"><img src="<%= img_url %>"></div>
+        <div class="desc"><%= desc %></div>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+
 </div>
-<div class="trinkets"></div>
+
+<div class="trinkets">
+  <p>Брелки</p>
+  <% html = Nokogiri::HTML(Curl.get(URL + '/Trinkets').body) %>
+
+  <% html.xpath('//tr').map do |row| %>
+    <% name = row.xpath('.//td[1]/a/@title').text %>
+    <% img_url = row.xpath('.//td[2]/a/img/@src').text %>
+    <% desc = row.xpath('.//td[3]').text %>
+    <div class="item">
+      <div class="name"><%= name %></div>
+      <div class="img"><img src="<%= img_url %>"></div>
+      <div class="desc"><%= desc %></div>
+    </div>
+    <hr>
+  <% end %>
+
+</div>

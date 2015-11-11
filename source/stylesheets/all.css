@@ -58,8 +58,15 @@ h1 {
   display: block;
   width: 100%;
 }
-
-.name, .img, .desc{
+.name{
   display: inline-block;
-  width: 30%;
+  width: 10%;
+}
+.img{
+  display: inline-block;
+  width: 20%;
+}
+.desc{
+  display: inline-block;
+  width: 60%;
 }
