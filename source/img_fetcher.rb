@@ -15,7 +15,7 @@ class Img_fetcher
   def parse(url, path)
     imgs = Nokogiri::HTML(Curl.get(URL + url).body).xpath(path)
     imgs.map do |img|
-      img_name = img.xpath('./@alt').text.sub(' Icon','').gsub(/[ \/]/, '_').gsub("\'", '').strip
+      img_name = img.xpath('./@alt').text.gsub(/( Icon)|(\')/,'').gsub(/[ \/]/, '_').strip
       img_url = img.xpath('./@src').text.strip
       unless File.exist?("./images/#{img_name}")
         File.open("./images/#{img_name}", 'w') { |file| file << Curl.get(img_url).body }
