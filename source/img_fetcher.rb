@@ -17,7 +17,7 @@ class Img_fetcher
     imgs.map do |img|
       img_name = img.xpath('./@alt').text.sub(' Icon','').gsub(/[ \/]/, '_').gsub("\'", '').strip
       img_url = img.xpath('./@src').text.strip
-      unless File.exist?('./images/#{img_name}')
+      unless File.exist?("./images/#{img_name}")
         File.open("./images/#{img_name}", 'w') { |file| file << Curl.get(img_url).body }
       end
     end
