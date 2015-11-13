@@ -70,3 +70,11 @@ configure :build do
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
 end
+
+activate :deploy do |deploy|
+  deploy.method          = :ftp
+  deploy.host            = 'ftp.boi.96.lt'
+  deploy.path            = '/public_html'
+  deploy.user            = ENV['FTP_USER']
+  deploy.password        = ENV['FTP_PASS']
+end
