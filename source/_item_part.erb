@@ -1,7 +1,15 @@
 <div class="item">
-  <div class="name"><%= item[:name] %></div>
-  <div class="img"><%= image_tag item[:img_url] %></div>
-  <div class="type"><%= item[:type] %></div>
-  <div class="desc"><%= item[:desc] %></div>
+  <div class="name">
+    <%= item[:name] %>
+  </div>
+  <div class="img">
+    <img src="<%= 'images/' + item[:name].gsub(/[ \/]/, '_').gsub("\'", '') + '.png' %>">
+  </div>
+  <div class="type">
+    <%= item[:type] %>
+  </div>
+  <div class="desc">
+    <%= item[:desc] %>
+  </div>
 </div>
 <hr>
