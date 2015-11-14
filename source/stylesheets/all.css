@@ -66,7 +66,7 @@ html, body, #wrapper, h2, hr{
 .item:hover{
   outline: 2px solid black;
 }
-.name, .img, .type, .desc{
+.name, .img, .type, .desc, img{
   display: table-cell;
   vertical-align: middle;
 }
