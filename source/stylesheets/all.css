@@ -72,16 +72,16 @@ html, body, #wrapper, h2, hr{
 }
 .name{
   width: 10%;
+  padding: 0px 5px;
 }
 .img{
-  width: 15%;
+  width: 10%;
 }
 .type{
   width: 5%;
   text-align: left;
 }
 .desc{
-  width: 60%;
   text-align: left;
 }
 img{
@@ -105,6 +105,8 @@ img{
   display: inline-block;
   width: 100%;
   color: black;
+  width: 10%;
+  padding: 0px 5px;
 }
 .menu_link a:hover{
   background-color: black;
