@@ -10,10 +10,10 @@
   <div class="menu_link"><a href="#trinkets">Брелоки</a></div>
 </div>
 
-<div class="items">
+<div id="items">
   <% html = Nokogiri::HTML(Curl.get(URL + '/Item').body) %>
   
-  <div id="passive" class="passive_items">
+  <div id="passive">
     <h2>Пассивные предметы</h2>
     <% html.xpath('//table[@class="mw-collapsible wikitable striped passive-collectible"]/tr').map do |row| %>
       <% item = get_item(row).merge(type: 'P') %>
@@ -22,7 +22,7 @@
     <% end %>
   </div>
 
-  <div id="active" class="active_items">
+  <div id="active">
     <h2>Активные предметы</h2>
     <% html.xpath('//table[@class="mw-collapsible wikitable striped active-collectible"]/tr').map do |row| %>
       <% item = get_item(row).merge(type: 'A') %>
@@ -33,7 +33,7 @@
 
 </div>
 
-<div id="trinkets" class="trinkets">
+<div id="trinkets">
   <h2>Брелоки</h2>
   <% html = Nokogiri::HTML(Curl.get(URL + '/Trinkets').body) %>
   <% html.xpath('//tr').map do |row| %>
