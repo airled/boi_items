@@ -61,6 +61,10 @@ html, body, #wrapper, h2, hr{
   display: table;
   width: 100%;
   padding: 2px 0px;
+  font-weight: bold;
+}
+.item:hover{
+  outline: 2px solid black;
 }
 .name, .img, .type, .desc{
   display: table-cell;
