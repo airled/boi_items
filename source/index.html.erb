@@ -4,41 +4,48 @@
 
 <% URL = 'http://bindingofisaacrebirth.gamepedia.com' %>
 
-<div id="navigation">
-  <div class="menu_link"><a href="#passive">Пассивные</a></div>
-  <div class="menu_link"><a href="#active">Активные</a></div>
-  <div class="menu_link"><a href="#trinkets">Брелоки</a></div>
-</div>
+<div id="wrapper">
 
-<div id="items">
-  <% html = Nokogiri::HTML(Curl.get(URL + '/Item').body) %>
+  <div id="navigation">
+    <div class="menu_link"><a href="#passive">Пассивные</a></div>
+    <div class="menu_link"><a href="#active">Активные</a></div>
+    <div class="menu_link"><a href="#trinkets">Брелоки</a></div>
+  </div>
+
+  <div id="items">
+    <% html = Nokogiri::HTML(Curl.get(URL + '/Item').body) %>
+    
+    <div id="passive">
+      <h2>Пассивные предметы</h2>
+      <hr>
+      <% html.xpath('//table[@class="mw-collapsible wikitable striped passive-collectible"]/tr').map do |row| %>
+        <% item = get_item(row).merge(type: 'P') %>
+        <% next if item[:name] == '' %>
+        <%= partial(:item_part, :locals => {:item => item}) %>
+      <% end %>
+    </div>
+
+    <div id="active">
+      <h2>Активные предметы</h2>
+      <hr>
+      <% html.xpath('//table[@class="mw-collapsible wikitable striped active-collectible"]/tr').map do |row| %>
+        <% item = get_item(row).merge(type: 'A') %>
+        <% next if item[:name] == '' %>
+        <%= partial(:item_part, :locals => {:item => item}) %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div id="trinkets">
+    <h2>Брелоки</h2>
+    <hr>
+    <% html = Nokogiri::HTML(Curl.get(URL + '/Trinkets').body) %>
+    <% html.xpath('//tr').map do |row| %>
+      <% item = get_item(row).merge(type: 'T') %>
+      <% next if item[:name] == '' %>
+      <%= partial(:item_part, :locals => {:item => item}) %>
+    <% end %>
+  </div>
   
-  <div id="passive">
-    <h2>Пассивные предметы</h2>
-    <% html.xpath('//table[@class="mw-collapsible wikitable striped passive-collectible"]/tr').map do |row| %>
-      <% item = get_item(row).merge(type: 'P') %>
-      <% next if item[:name] == '' %>
-      <%= partial(:item_part, :locals => {:item => item}) %>
-    <% end %>
-  </div>
-
-  <div id="active">
-    <h2>Активные предметы</h2>
-    <% html.xpath('//table[@class="mw-collapsible wikitable striped active-collectible"]/tr').map do |row| %>
-      <% item = get_item(row).merge(type: 'A') %>
-      <% next if item[:name] == '' %>
-      <%= partial(:item_part, :locals => {:item => item}) %>
-    <% end %>
-  </div>
-
-</div>
-
-<div id="trinkets">
-  <h2>Брелоки</h2>
-  <% html = Nokogiri::HTML(Curl.get(URL + '/Trinkets').body) %>
-  <% html.xpath('//tr').map do |row| %>
-    <% item = get_item(row).merge(type: 'T') %>
-    <% next if item[:name] == '' %>
-    <%= partial(:item_part, :locals => {:item => item}) %>
-  <% end %>
 </div>

@@ -53,13 +53,18 @@ h1 {
     -webkit-transform: scale(1);
   }
 }
-
+html, body, #wrapper, h2, hr{
+  margin: 0px;
+  padding: 0px;
+}
 .item{
-  display: block;
+  display: table;
   width: 100%;
+  padding: 2px 0px;
 }
 .name, .img, .type, .desc{
-  display: inline-block;
+  display: table-cell;
+  vertical-align: middle;
 }
 .name{
   width: 10%;
@@ -83,12 +88,28 @@ img{
   display: block;
   width: 100%;
   bottom: 0px;
-  background: #bbbbbb;
+  background-color: #bbbbbb;
 }
 .menu_link{
   display: inline-block;
-  width: 33%;
+  max-width: 33%;
   text-align: center;
   font-family: sans-serif;
 }
-
+.menu_link a{
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  color: black;
+}
+.menu_link a:hover{
+  background-color: black;
+  color: white;
+  transition: 0.5s background-color, 0.5s color;
+}
+h2{
+  background-color: #bbbbbb;
+}
+#trinkets{
+  margin-bottom: 30px;
+}
