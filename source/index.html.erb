@@ -4,10 +4,16 @@
 
 <% URL = 'http://bindingofisaacrebirth.gamepedia.com' %>
 
+<div id="navigation">
+  <div class="menu_link"><a href="#passive">Пассивные</a></div>
+  <div class="menu_link"><a href="#active">Активные</a></div>
+  <div class="menu_link"><a href="#trinkets">Брелоки</a></div>
+</div>
+
 <div class="items">
   <% html = Nokogiri::HTML(Curl.get(URL + '/Item').body) %>
   
-  <div class="passive_items">
+  <div id="passive" class="passive_items">
     <h2>Пассивные предметы</h2>
     <% html.xpath('//table[@class="mw-collapsible wikitable striped passive-collectible"]/tr').map do |row| %>
       <% item = get_item(row).merge(type: 'P') %>
@@ -16,7 +22,7 @@
     <% end %>
   </div>
 
-  <div class="active_items">
+  <div id="active" class="active_items">
     <h2>Активные предметы</h2>
     <% html.xpath('//table[@class="mw-collapsible wikitable striped active-collectible"]/tr').map do |row| %>
       <% item = get_item(row).merge(type: 'A') %>
@@ -27,7 +33,7 @@
 
 </div>
 
-<div class="trinkets">
+<div id="trinkets" class="trinkets">
   <h2>Брелоки</h2>
   <% html = Nokogiri::HTML(Curl.get(URL + '/Trinkets').body) %>
   <% html.xpath('//tr').map do |row| %>

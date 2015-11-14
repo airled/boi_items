@@ -3,7 +3,7 @@
     <%= item[:name] %>
   </div>
   <div class="img">
-    <img src="<%= 'images/' + item[:name].gsub(/[ \/]/, '_').gsub("\'", '') + '.png' %>">
+    <img src="<%= 'images/' + item[:name].gsub(/[ \/]/, '_').gsub("\'", '').gsub(/\./, '@') + '.png' %>">
   </div>
   <div class="type">
     <%= item[:type] %>
