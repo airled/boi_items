@@ -65,13 +65,14 @@ html, body, #wrapper, h2, hr{
 }
 .item:hover{
   outline: 2px solid black;
+  background-color: #bbbbbb;
 }
 .name, .img, .type, .desc, img{
   display: table-cell;
   vertical-align: middle;
 }
 .name{
-  width: 10%;
+  width: 150px;
   padding: 0px 5px;
 }
 .img{
