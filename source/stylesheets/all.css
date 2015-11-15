@@ -77,7 +77,6 @@ html, body, #wrapper, h2, hr{
 }
 .img{
   width: 10%;
-  margin: 0px auto;
 }
 .type{
   width: 5%;
@@ -88,6 +87,7 @@ html, body, #wrapper, h2, hr{
 }
 img{
   height: 45px;
+  margin: 0px auto;
 }
 #navigation{
   position: fixed;
