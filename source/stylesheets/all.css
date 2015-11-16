@@ -84,6 +84,7 @@ html, body, #wrapper, h2, hr{
 }
 .desc{
   text-align: left;
+  padding-right: 10px;
 }
 img{
   height: 45px;
