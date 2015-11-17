@@ -13,7 +13,7 @@
   </div>
 
   <div id="items">
-    <% html = Nokogiri::HTML(Curl.get(URL + '/Item').body) %>
+    <% html = get_html(URL + '/Item') %>
     
     <div id="passive">
       <h2>Пассивные предметы</h2>
@@ -40,7 +40,7 @@
   <div id="trinkets">
     <h2>Брелоки</h2>
     <hr>
-    <% html = Nokogiri::HTML(Curl.get(URL + '/Trinkets').body) %>
+    <% html = get_html(URL + '/Trinkets') %>
     <% html.xpath('//tr').map do |row| %>
       <% item = get_item(row).merge(type: 'T') %>
       <% next if item[:name] == '' %>
