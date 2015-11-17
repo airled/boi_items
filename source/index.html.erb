@@ -18,7 +18,7 @@
     <div id="passive">
       <h2>Пассивные предметы</h2>
       <hr>
-      <% html.xpath('//table[@class="mw-collapsible wikitable striped passive-collectible"]/tr').map do |row| %>
+      <% html.xpath('//table[@class="mw-collapsible wikitable striped passive-collectible"]//tr').map do |row| %>
         <% item = get_item(row).merge(type: 'P') %>
         <% next if item[:name] == '' %>
         <%= partial(:item_part, :locals => {:item => item}) %>
@@ -28,7 +28,7 @@
     <div id="active">
       <h2>Активные предметы</h2>
       <hr>
-      <% html.xpath('//table[@class="mw-collapsible wikitable striped active-collectible"]/tr').map do |row| %>
+      <% html.xpath('//table[@class="mw-collapsible wikitable striped active-collectible"]//tr').map do |row| %>
         <% item = get_item(row).merge(type: 'A') %>
         <% next if item[:name] == '' %>
         <%= partial(:item_part, :locals => {:item => item}) %>
