@@ -79,8 +79,9 @@ html, body, #wrapper, h2, hr{
   width: 10%;
 }
 .type{
-  width: 5%;
+  width: 30px;
   text-align: left;
+  color: blue;
 }
 .desc{
   text-align: left;
@@ -112,7 +113,7 @@ img{
 .menu_link a:hover{
   background-color: black;
   color: white;
-  transition: 0.5s background-color, 0.5s color;
+  transition: 0.3s background-color, 0.3s color;
 }
 h2{
   background-color: #bbbbbb;
