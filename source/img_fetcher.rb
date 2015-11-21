@@ -17,12 +17,12 @@ class Img_fetcher
     imgs.map do |img|
       img_name = img.xpath('./@alt').text.gsub(/( Icon.png)|(\')/, '').gsub(/[ \/]/, '_').gsub(/\./, '@').strip
       img_url = img.xpath('./@src').text.strip
-      unless File.exist?("./images/#{img_name}.png")
-        File.open("./images/#{img_name}.png", 'w') { |file| file << Curl.get(img_url).body }
+      file_path = File.expand_path("../images/#{img_name}.png", __FILE__)
+      unless File.exist?(file_path)
+        File.open(file_path, 'w') { |file| file << Curl.get(img_url).body }
+        puts file_path
       end
     end
   end
 
 end
-
-Img_fetcher.new.fetch
