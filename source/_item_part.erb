@@ -5,7 +5,7 @@
   <div class="img">
     <img src="<%= 'images/' + item[:name].gsub(/[ \/]/, '_').gsub("\'", '').gsub(/\./, '@') + '.png' %>">
   </div>
-  <div class="type">
+  <div class="<%= type_class %>">
     <%= item[:type] %>
   </div>
   <div class="desc">

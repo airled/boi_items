@@ -21,7 +21,7 @@
       <% html.xpath('//table[@class="mw-collapsible wikitable striped passive-collectible"]//tr').map do |row| %>
         <% item = get_item(row).merge(type: 'P') %>
         <% next if item[:name] == '' %>
-        <%= partial(:item_part, :locals => {:item => item}) %>
+        <%= partial(:item_part, :locals => {item: item, type_class: 'passive_type'}) %>
       <% end %>
     </div>
 
@@ -31,7 +31,7 @@
       <% html.xpath('//table[@class="mw-collapsible wikitable striped active-collectible"]//tr').map do |row| %>
         <% item = get_item(row).merge(type: 'A') %>
         <% next if item[:name] == '' %>
-        <%= partial(:item_part, :locals => {:item => item}) %>
+        <%= partial(:item_part, :locals => {item: item, type_class: 'active_type'}) %>
       <% end %>
     </div>
 
@@ -44,7 +44,7 @@
     <% html.xpath('//tr').map do |row| %>
       <% item = get_item(row).merge(type: 'T') %>
       <% next if item[:name] == '' %>
-      <%= partial(:item_part, :locals => {:item => item}) %>
+      <%= partial(:item_part, :locals => {item: item, type_class: 'trinket_type'}) %>
     <% end %>
   </div>
   
