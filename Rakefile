@@ -1,9 +1,9 @@
 task :build do
-  system('bundle exec middleman build')
+  system('middleman build')
 end
 
 task :server do
-  system('bundle exec middleman server')
+  system('middleman server')
 end
 
 task :imgs do
@@ -12,5 +12,5 @@ task :imgs do
 end
 
 task :deploy do
-  system('bundle exec middleman deploy')
+  system('middleman deploy')
 end
