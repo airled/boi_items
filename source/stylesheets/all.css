@@ -63,6 +63,7 @@ img{
 .menu_link a{
   text-decoration: none;
   color: black;
+  padding: 0px 3px;
 }
 h2{
   background-color: #bbbbbb;
