@@ -54,8 +54,9 @@ set :images_dir, 'images'
 configure :build do
   activate :minify_css
   activate :minify_javascript
-  activate :minify_html
-  
+  activate :minify_html do |html|
+    html.remove_intertag_spaces = true
+  end  
   # Enable cache buster
   # activate :asset_hash
 
