@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'curb'
+require_relative './handler'
 
 class Img_fetcher
 
@@ -13,7 +14,7 @@ class Img_fetcher
   private
 
   def parse(url, path)
-    imgs = Nokogiri::HTML(Curl.get(URL + url).body).xpath(path)
+    imgs = get_html(URL + url).xpath(path)
     imgs.map do |img|
       img_name = img.xpath('./@alt').text.gsub(/( Icon.png)|(\')/, '').gsub(/[ \/]/, '_').gsub(/\./, '@').strip
       img_url = img.xpath('./@src').text.strip
