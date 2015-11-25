@@ -7,7 +7,7 @@ task :server do
 end
 
 task :imgs do
-  require_relative('./source/img_fetcher.rb')
+  require_relative('./img_fetcher.rb')
   Img_fetcher.new.fetch
 end
 
