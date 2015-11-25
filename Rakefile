@@ -15,6 +15,7 @@ namespace :imgs do
   task :get do
     require_relative('./img_fetcher.rb')
     Img_fetcher.new.fetch
+    puts Dir.glob('./source/images/*').reject { |img| img.include?('favicon') }.size.to_s + 'images got.'
   end
 
   task :clear do
