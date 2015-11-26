@@ -12,16 +12,20 @@ end
 
 namespace :imgs do
 
+  def all_images
+    Dir.glob('./source/images/*').reject { |img| img.include?('favicon') }
+  end
+
   task :get do
     require_relative('./img_fetcher.rb')
     Img_fetcher.new.fetch
-    puts Dir.glob('./source/images/*').reject { |img| img.include?('favicon') }.size.to_s + 'images got.'
+    puts all_images.size.to_s + ' images got.'
   end
 
   task :clear do
-    imgs = Dir.glob('./source/images/*').reject { |img| img.include?('favicon') }
-    amount = imgs.size
-    imgs.map { |img| File.delete(img) }
+    images = all_images
+    amount = images.size
+    images.map { |img| File.delete(img) }
     puts "\e[31m#{amount} images deleted.\e[0m"
   end
 
