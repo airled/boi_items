@@ -33,3 +33,6 @@ namespace :imgs do
   end
 
 end
+
+task :update => ['imgs:clear', 'imgs:get', :build, :deploy] do
+end
