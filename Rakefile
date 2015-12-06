@@ -1,4 +1,4 @@
-task :build do
+task :build => :cookies do
   system('middleman build')
 end
 
@@ -10,13 +10,17 @@ task :deploy do
   system('middleman deploy')
 end
 
+task :cookies do
+  require_relative './get_cookies'
+end
+
 namespace :imgs do
 
   def all_images
     Dir.glob('./source/images/*').reject { |img| img.include?('favicon') }
   end
 
-  task :get do
+  task :get => :cookies do
     require_relative('./img_fetcher.rb')
     Img_fetcher.new.fetch
     puts all_images.size.to_s + ' images got.'
@@ -27,9 +31,6 @@ namespace :imgs do
     amount = images.size
     images.map { |img| File.delete(img) }
     puts "\e[31m#{amount} images deleted.\e[0m"
-  end
-
-  task :reget => [:clear, :get] do
   end
 
 end
