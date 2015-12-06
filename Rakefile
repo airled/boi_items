@@ -37,5 +37,5 @@ end
 task :rebuild => ['imgs:clear', 'imgs:get', :build] do
 end
 
-task :update => ['imgs:clear', 'imgs:get', :build, :deploy] do
+task :update => [:rebuild, :deploy] do
 end
