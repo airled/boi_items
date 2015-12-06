@@ -7,9 +7,10 @@
 <div id="wrapper">
 
   <div id="navigation">
-    <div class="menu_link"><a href="#passive">Passive</a></div>
-    <div class="menu_link"><a href="#active">Active</a></div>
-    <div class="menu_link"><a href="#trinkets">Trinkets</a></div>
+    <div class="menu_link"><%= link_to('Passive', '#passive') %></div>
+    <div class="menu_link"><%= link_to('Active', '#active') %></div>
+    <div class="menu_link"><%= link_to('Trinkets', '#trinkets') %></div>
+    <div class="menu_link" id="source_link" ><%= link_to('Source', URL, :target => "_blank") %></div>
   </div>
 
   <div id="items">

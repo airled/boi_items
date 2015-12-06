@@ -90,3 +90,7 @@ h2{
 .trinket_type{
   color: #D2691E;
 }
+#source_link{
+  position: absolute;
+  right: 0px;
+}
