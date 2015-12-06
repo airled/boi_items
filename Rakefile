@@ -11,7 +11,8 @@ task :deploy do
 end
 
 task :cookies do
-  require_relative './get_cookies'
+  require_relative './cookies_fetcher'
+  Cookies_fetcher.new.run
 end
 
 namespace :imgs do
