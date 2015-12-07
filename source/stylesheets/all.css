@@ -68,7 +68,7 @@ img{
 .menu_link a{
   color: black;
   text-decoration: none;
-  padding: 0px 3px;
+  padding: 0px 5px;
   transition: 0.3s color;
 }
 .menu_link a:hover{
