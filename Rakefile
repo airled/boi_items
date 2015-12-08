@@ -15,6 +15,12 @@ task :cookies do
   Cookies_fetcher.new.run
 end
 
+task :rebuild => ['imgs:clear', 'imgs:get', :build] do
+end
+
+task :update => [:rebuild, :deploy] do
+end
+
 namespace :imgs do
 
   def all_images
@@ -34,10 +40,20 @@ namespace :imgs do
     puts "\e[31m#{amount} images deleted.\e[0m"
   end
 
+  #aliases
+  task :c => :clear do
+  end
+  task :g => :get do
+  end
+  
 end
 
-task :rebuild => ['imgs:clear', 'imgs:get', :build] do
+#aliases
+task :b => :build do
 end
-
-task :update => [:rebuild, :deploy] do
+task :rb => :rebuild do
+end
+task :d => :deploy do
+end
+task :u => :update do
 end
