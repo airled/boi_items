@@ -51,6 +51,8 @@ end
 #aliases
 task :b => :build do
 end
+task :s => :server do
+end
 task :rb => :rebuild do
 end
 task :d => :deploy do

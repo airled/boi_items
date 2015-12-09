@@ -56,8 +56,8 @@ class Cookies_fetcher
     {redirect_url: redirect_url, got_cookies: got_cookies}
   end
 
-  def header_value(head, header_name)
-    head.split("\r\n").select { |part| part.include?("#{header_name}") }.first.to_s.gsub("#{header_name}: ", '')
+  def header_value(head, header)
+    head.split("\r\n").select { |part| part.include?("#{header}") }.first.to_s.gsub("#{header}: ", '')
   end
   
 end
