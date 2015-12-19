@@ -7,10 +7,11 @@ class Cookies_fetcher
 
   def run
     params1 = request(URL)
-    cookies1 = params1[:got_cookies].split(';').first
+    cookies1 = params1[:got_cookies]
     redirect1 = params1[:redirect_url]
 
     params2 = request(redirect1)
+    cookies2 = params2[:got_cookies]
     redirect2 = params2[:redirect_url]
 
     params3 = request(redirect2, cookies1)
@@ -24,24 +25,6 @@ class Cookies_fetcher
 
     puts 'Cookies got.'
   end
-
-  # def do_it(url, redirect_count, cookies)
-  #   c = Curl::Easy.new(url) do |req|
-  #     req.headers["User-Agent"] = AGENT
-  #     req.headers["Cookie"] = cookies if cookies
-  #   end
-  #   c.perform
-  #   redirect_url = header_value(c.head, 'Location')
-  #   got_cookies = header_value(c.head, 'Set-Cookie').empty? ? nil : header_value(c.head, 'Set-Cookie')
-  #   puts redirect_url
-  #   puts got_cookies
-  #   puts
-  #   if redirect_count == 4
-  #     return {redirect_url: redirect_url, got_cookies: got_cookies}
-  #   else
-  #     do_it(redirect_url, redirect_count + 1, got_cookies)
-  #   end
-  # end
 
   private
 
@@ -57,9 +40,7 @@ class Cookies_fetcher
   end
 
   def header_value(head, header)
-    head.split("\r\n").select { |part| part.include?("#{header}") }.first.to_s.gsub("#{header}: ", '')
+    head.split("\r\n").select { |part| part.include?("#{header}") }.map { |header| header.split(';').first }.flatten.join(';').gsub("#{header}: ", '')
   end
   
 end
-
-# do_it(URL, 1, nil)
