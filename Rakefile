@@ -30,7 +30,8 @@ namespace :imgs do
   task :get => :cookies do
     require_relative('./img_fetcher.rb')
     Img_fetcher.new.fetch
-    puts all_images.size.to_s + ' images got.'
+    puts "\e[32m#{all_images.size.to_s} images got.\e[0m"
+
   end
 
   task :clear do

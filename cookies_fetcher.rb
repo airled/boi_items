@@ -23,7 +23,7 @@ class Cookies_fetcher
 
     File.open('./cookies' , 'w') { |file| file << cookies1 + ';' + cookies3 }
 
-    puts 'Cookies got.'
+    puts "\e[32mCookies got.\e[0m"
   end
 
   private
