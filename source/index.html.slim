@@ -1,0 +1,41 @@
+- require 'nokogiri'
+- require 'curb'
+- require_relative '../handler'
+
+- URL = 'http://bindingofisaacrebirth.gamepedia.com'
+
+#wrapper
+
+  #navigation
+    .menu_link = link_to('Passive', '#passive')
+    .menu_link = link_to('Active', '#active')
+    .menu_link = link_to('Trinkets', '#trinkets')
+    .menu_link#source_link = link_to('Source page', URL, :target => "_blank")
+
+  #items
+    - html = get_html(URL + '/Item')
+    
+    #passive
+      h2 Passive items
+      hr
+      - html.xpath('//table[@class="mw-collapsible wikitable striped passive-collectible"]//tr').map do |row|
+        - item = get_item(row).merge(type: 'P')
+        - next if item[:name] == ''
+        = partial(:item_part, :locals => {item: item, type_class: 'passive_type'})
+
+    #active
+      h2 Active items
+      hr
+      - html.xpath('//table[@class="mw-collapsible wikitable striped active-collectible"]//tr').map do |row|
+        - item = get_item(row).merge(type: 'A')
+        - next if item[:name] == ''
+        = partial(:item_part, :locals => {item: item, type_class: 'active_type'})
+
+  #trinkets
+    h2 Trinkets
+    hr
+    - html = get_html(URL + '/Trinkets')
+    - html.xpath('//tr').map do |row|
+      - item = get_item(row).merge(type: 'T')
+      - next if item[:name] == ''
+      = partial(:item_part, :locals => {item: item, type_class: 'trinket_type'})
