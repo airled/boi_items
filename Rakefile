@@ -1,3 +1,5 @@
+task default: :rebuild
+
 task :build => :cookies do
   system('middleman build')
 end
