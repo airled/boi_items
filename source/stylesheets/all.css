@@ -2,6 +2,9 @@ html, body, #wrapper, h2, hr{
   margin: 0px;
   padding: 0px;
 }
+#wrapper{
+  min-width: 500px;
+}
 body{
   background-color: #dddddd;
   font-family: sans-serif;
