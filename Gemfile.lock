@@ -119,6 +119,9 @@ GEM
       ffi (>= 0.5.0)
     ref (2.0.0)
     sass (3.4.19)
+    slim (3.0.6)
+      temple (~> 0.7.3)
+      tilt (>= 1.3.3, < 2.1)
     sprockets (2.12.4)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -129,6 +132,7 @@ GEM
     sprockets-sass (1.3.1)
       sprockets (~> 2.0)
       tilt (~> 1.1)
+    temple (0.7.6)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -156,6 +160,7 @@ DEPENDENCIES
   middleman-minify-html
   nokogiri
   rake
+  slim
   therubyracer
   tzinfo-data
   wdm (~> 0.1.0)
