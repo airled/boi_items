@@ -7,7 +7,7 @@ class Img_fetcher
   URL = 'http://bindingofisaacrebirth.gamepedia.com'
 
   def fetch
-    parse('/Items', '//div[@id="headertabs"]//a[@class="image"]/img')
+    parse('/Items', '//table//a[@class="image"]/img')
     parse('/Trinkets', '//table[@class="mw-collapsible wikitable striped trinkets"]//a[@class="image"]/img')
   end
   
