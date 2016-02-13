@@ -21,7 +21,7 @@ class Cookies_fetcher
     params4 = request(redirect3, cookies1 + ';' + cookies3)
     redirect4 = params4[:redirect_url]
 
-    File.open('./cookies' , 'w') { |file| file << cookies1 + ';' + cookies3 }
+    File.open('../cookies' , 'w') { |file| file << cookies1 + ';' + cookies3 }
 
     puts "\e[32mCookies got.\e[0m"
   end
